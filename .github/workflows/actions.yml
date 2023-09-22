@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           #token: ${{ secrets.SECRET2 }}
-          repository: dozzimeter/test2
+          repository: dozzimeter/test2@main
           path: seq
           
       - name: setup python
