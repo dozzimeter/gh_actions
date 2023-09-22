@@ -16,8 +16,8 @@ jobs:
       - name: 'Preparing blueprint-environment'
         uses: actions/checkout@v2
         with:
-          #token: ${{ secrets.PAT }}
-          repository: dozzimeter/test
+          #token: ${{ secrets.SECRET2 }}
+          repository: dozzimeter/test2
           path: seq
           
       - name: setup python
