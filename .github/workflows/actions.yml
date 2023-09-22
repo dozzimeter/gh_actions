@@ -12,7 +12,14 @@ jobs:
 
       - name: checkout repo content
         uses: actions/checkout@v2 # checkout the repository content
-
+        
+      - name: 'Preparing blueprint-environment'
+        uses: actions/checkout@v2
+        with:
+          #token: ${{ secrets.PAT }}
+          repository: dozzimeter/test
+          path: seq
+          
       - name: setup python
         uses: actions/setup-python@v4
         with:
@@ -26,13 +33,15 @@ jobs:
       - name: execute py script # run main.py
         env:
           SECRET1: ${{ secrets.SECRET1 }}
-        run: python main.py
+        #run: python main.py
+        run: python seq/main.py
 
       - name: commit files
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add -A
+          #git add -A
+          git add *.json
           git diff-index --quiet HEAD || (git commit -a -m "updated logs" --allow-empty)
 
       - name: push changes
